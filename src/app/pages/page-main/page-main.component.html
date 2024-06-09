@@ -1,0 +1,46 @@
+<div class="tp">
+    <h2>Trending</h2>
+    <div id="thumbs-trend">
+        <div class="thumb" *ngFor="let dados of filtroTrueTrend()">
+            <div class="bookmarked" (click)=" dados.isBookmarked = !dados.isBookmarked">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="14">
+                    <path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" stroke-width="1.5"
+                    [ngStyle]="dados.isBookmarked ? {'fill': 'white'} : {'fill': 'none'}"/>
+                </svg>
+            </div>
+            <img [src]="dados.thumbnail.trending.large" [alt]="dados.title" class="thumb-img">
+            <div class="thumb-desc trends">
+                <div class="descricao">
+                    <li class="thumb-year">{{dados.year}}</li>
+                    <li *ngIf="dados.category === 'Movie'"><img src="./assets/icon-category-movie.svg"> {{dados.category}}</li>
+                    <li *ngIf="dados.category === 'TV Series'"><img src="./assets/icon-category-tv.svg"> {{dados.category}}</li>
+                    <li>{{dados.rating}}</li>
+                </div>
+                <h3>{{dados.title}}</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="tp">
+    <h2>Recommended for you</h2>
+    <div id="conteiner-thumb">
+        <div class="bloco-thumbs" *ngFor="let dados of filtroFalseTrend()">
+            <div class="bookmarked">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="14">
+                    <path d="m10.518.75.399 12.214-5.084-4.24-4.535 4.426L.75 1.036l9.768-.285Z" stroke="#FFF" stroke-width="1.5"
+                    [ngStyle]="dados.isBookmarked ? {'fill': 'white'} : {'fill': 'none'}"/>
+                </svg>
+            </div>
+            <img [src]="dados.thumbnail.regular.large" [alt]="dados.title" class="thumb-img2">
+            <div class="thumb-desc">
+                <div class="descricao">
+                    <li class="thumb-year">{{dados.year}}</li>
+                    <li *ngIf="dados.category === 'Movie'"><img src="./assets/icon-category-movie.svg"> {{dados.category}}</li>
+                    <li *ngIf="dados.category === 'TV Series'"><img src="./assets/icon-category-tv.svg"> {{dados.category}}</li>
+                    <li>{{dados.rating}}</li>
+                </div>
+                <h4>{{dados.title}}</h4>
+            </div>
+        </div>
+    </div>
+</div>
